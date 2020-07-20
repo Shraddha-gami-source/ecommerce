@@ -1,0 +1,259 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb" xmlns="http://www.w3.org/1999/html">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Checkout</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="single-product.html">Checkout</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Banner Area -->
+
+    <!--================Checkout Area =================-->
+    <section class="checkout_area section_gap">
+        <div class="container">
+<!--            <div class="returning_customer" id="user-info">-->
+
+<!--                <form class="row contact_form form" action="#" method="post" novalidate="novalidate">-->
+<!--                    {% csrf_token %}-->
+
+<!--                </form>-->
+<!--            </div>-->
+<!--            <div class="cupon_area">-->
+<!--                <div class="check_title">-->
+<!--                    <h2>Have a coupon? <a href="#">Click here to enter your code</a></h2>-->
+<!--                </div>-->
+<!--                <input type="text" placeholder="Enter coupon code">-->
+<!--                <a class="tp_btn" href="#">Apply Coupon</a>-->
+<!--            </div>-->
+            <div class="billing_details">
+                <div class="row">
+                    <div class="col-lg-6">
+<!--                        <h3>Billing Details</h3>-->
+                        <form id="form" class="row contact_form form" action="#" method="post" novalidate="novalidate">
+                            {% csrf_token %}
+
+                            <div class="check_title col-md-12" id="user-info">
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+                                </div>
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="col-md-12 form-group">
+                                    <div class="creat_account">
+                                        <h3>Shipping Information:</h3>
+                                    </div>
+                                    <textarea class="form-control" name="address" id="address" rows="1" placeholder="Address"></textarea>
+                                </div>
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="city" name="city" placeholder="City" onfocus="this.placeholder = ''" onblur="this.placeholder = 'City'">
+                                </div>
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="state" name="state" placeholder="State" onfocus="this.placeholder = ''" onblur="this.placeholder = 'State'">
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="Zip code" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Zip code'">
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <button class="primary-btn col-md-12" id="form-button" type="submit" value="submit">Submit</button>
+                                </div>
+                                <div class="hidden col-md-12 form-group" id="payment-info">
+                                    <a class="primary-btn col-md-12" id="make-payment" href="{% url 'process-order' %}"><center>Proceed to Paypal</center></a>
+                                </div>
+                            </div>
+
+
+<!--                            <div class="col-md-6 form-group p_star">-->
+<!--                                <input type="text" class="form-control" id="number" name="number">-->
+<!--                                <span class="placeholder" data-placeholder="Phone number"></span>-->
+<!--                            </div>-->
+<!--                            <div class="col-md-6 form-group p_star">-->
+<!--                                <input type="text" class="form-control" id="email" name="compemailany">-->
+<!--                                <span class="placeholder" data-placeholder="Email Address"></span>-->
+<!--                            </div>-->
+<!--                            <div class="col-md-12 form-group p_star">-->
+<!--                                <select class="country_select">-->
+<!--                                    <option value="1">Country</option>-->
+<!--                                    <option value="2">Country</option>-->
+<!--                                    <option value="4">Country</option>-->
+<!--                                </select>-->
+<!--                            </div>-->
+<!--                            <div class="col-md-12 form-group p_star">-->
+<!--                                <input type="text" class="form-control" id="add1" name="add1">-->
+<!--                                <span class="placeholder" data-placeholder="Address line 01"></span>-->
+<!--                            </div>-->
+<!--                            <div class="col-md-12 form-group p_star">-->
+<!--                                <input type="text" class="form-control" id="add2" name="add2">-->
+<!--                                <span class="placeholder" data-placeholder="Address line 02"></span>-->
+<!--                            </div>-->
+<!--                            <div class="col-md-12 form-group p_star">-->
+<!--                                <input type="text" class="form-control" id="city" name="city">-->
+<!--                                <span class="placeholder" data-placeholder="Town/City"></span>-->
+<!--                            </div>-->
+<!--                            <div class="col-md-12 form-group p_star">-->
+<!--                                <select class="country_select">-->
+<!--                                    <option value="1">District</option>-->
+<!--                                    <option value="2">District</option>-->
+<!--                                    <option value="4">District</option>-->
+<!--                                </select>-->
+<!--                            </div>-->
+<!--                            <div class="col-md-12 form-group">-->
+<!--                                <input type="text" class="form-control" id="zip" name="zip" placeholder="Postcode/ZIP">-->
+<!--                            </div>-->
+<!--                            <div class="col-md-12 form-group">-->
+<!--                                <div class="creat_account">-->
+<!--                                    <h3>Shipping Details</h3>-->
+<!--                                    <input type="checkbox" id="f-option3" name="selector">-->
+<!--                                    <label for="f-option3">Ship to a different address?</label>-->
+<!--                                </div>-->
+<!--                                <textarea class="form-control" name="message" id="message" rows="1" placeholder="Order Notes"></textarea>-->
+<!--                            </div>-->
+                        </form>
+<!--                        <div class="hidden col-md-12 row" id="payment-info" >-->
+<!--&lt;!&ndash;                                <small>Proceed to Paypal</small>&ndash;&gt;-->
+<!--                                <a class="primary-btn col-md-12" id="make-payment"  href="#">Proceed to Paypal</a>-->
+<!--&lt;!&ndash;                                <a class="primary-btn col-md-12" id="make-payment" type="submit" value="makepayment">Make Payment</a>&ndash;&gt;-->
+<!--                        </div>-->
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="order_box">
+                            <h2>Your Order</h2>
+                            <ul class="list">
+                                <li><a href="#">Product <span>Total</span></a></li>
+                                {% for item in items %}
+                                <li><a href="#">{{ item.product.name }} <span class="middle">x {{ item.quantity }}</span> <span class="last">{{ item.product.price|floatformat:2 }}</span></a></li>
+                                {% endfor %}
+                            </ul>
+                            <ul class="list list_2">
+                                <li><a href="#">Subtotal <span>{{ order.get_cart_total|floatformat:2 }}</span></a></li>
+<!--                                <li><a href="#">Shipping <span>$50</span></a></li>-->
+                                <li><a href="#">Total <span>{{ order.gst_total }}</span></a></li>
+                            </ul>
+
+<!--                            <div class="payment_item">-->
+<!--                                <div class="radion_btn">-->
+<!--                                    <input type="radio" id="f-option5" name="selector">-->
+<!--                                    <label for="f-option5">Check payments</label>-->
+<!--                                    <div class="check"></div>-->
+<!--                                </div>-->
+<!--                                <p>Please send a check to Store Name, Store Street, Store Town, Store State / County,-->
+<!--                                    Store Postcode.</p>-->
+<!--                            </div>-->
+<!--                            <div class="payment_item active">-->
+<!--                                <div class="radion_btn">-->
+<!--                                    <input type="radio" id="f-option6" name="selector">-->
+<!--                                    <label for="f-option6">Paypal </label>-->
+<!--                                    <img src="{% static 'website/img/product/card.jpg' %}" alt="">-->
+<!--                                    <div class="check"></div>-->
+<!--                                </div>-->
+<!--                                <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal-->
+<!--                                    account.</p>-->
+<!--                            </div>-->
+<!--                            <div class="creat_account">-->
+<!--                                <input type="checkbox" id="f-option4" name="selector">-->
+<!--                                <label for="f-option4">I’ve read and accept the </label>-->
+<!--                                <a href="#">terms & conditions*</a>-->
+<!--                            </div>-->
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Checkout Area =================-->
+
+    <script type="text/javascript">
+        var total = '{{ order.get_cart_total }}'
+
+        if (user != 'AnonymousUser'){
+            document.getElementById('user-info').innerHTML = ''
+        }
+
+
+
+        var form = document.getElementById('form')
+
+<!--        csrftoken = form.getElementsByTagName('input')[0].value-->
+<!--        console.log('NewToken', csrftoken)-->
+
+        form.addEventListener('submit', function(e){
+            e.preventDefault()
+            console.log('Form Submitted...')
+            document.getElementById('form-button').classList.add('hidden')
+            document.getElementById('payment-info').classList.remove('hidden')
+        })
+
+        document.getElementById('make-payment').addEventListener('click', function(e){
+            submitFormData()
+        })
+
+        function submitFormData(){
+            console.log('Payment Button Clicked')
+
+            var userFormData = {
+                'name': null,
+                'email': null,
+                'total': total,
+            }
+            var shippingInfo = {
+                'address': null,
+                'city': null,
+                'state': null,
+                'zipcode': null,
+            }
+
+            if (user != 'AnonymousUser'){
+                shippingInfo.address = form.address.value
+                shippingInfo.city = form.city.value
+                shippingInfo.state = form.state.value
+                shippingInfo.zipcode = form.zipcode.value
+            }
+
+            if (user == 'AnonymousUser'){
+                userFormData.name = form.name.value
+                userFormData.email = form.email.value
+                shippingInfo.address = form.address.value
+                shippingInfo.city = form.city.value
+                shippingInfo.state = form.state.value
+                shippingInfo.zipcode = form.zipcode.value
+            }
+
+            var url = '/process-order'
+            fetch(url, {
+                method:'POST',
+                headers:{
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken,
+                },
+                body:JSON.stringify({'form': userFormData, 'shipping': shippingInfo})
+            })
+            .then((response) => {
+                return response.json()
+            })
+            .then((data) => {
+                console.log('success', data);
+                alert('Transaction Completed')
+
+                cart = {}
+			    document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+
+                window.location.href = "{% url 'index' %}"
+            });
+        }
+    </script>
+{% endblock %}

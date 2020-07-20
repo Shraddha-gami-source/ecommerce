@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>Profile</h1>
+					<nav class="d-flex align-items-center">
+						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">Profile</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+
+	<!--================Login Box Area =================-->
+	<section class="login_box_area section_gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="login_box_img">
+						<img class="img-fluid" src="{% static 'website/img/login.jpg' %}" alt="">
+						<div class="hover">
+							<h4>Your Profile</h4>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="login_form_inner">
+<!--						<h3>Update your profile</h3>-->
+						<form class="row login_form" action="" method="post" id="contactForm" novalidate="novalidate">
+							{% csrf_token %}
+							<div class="col-md-12 form-group">
+<!--								{{form.username}}-->
+								<span class="col-md-6 ">Username</span>
+								<input type="text" class="form-control col-md-12" id="username" name="username" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" value="{{request.user}}">
+							</div>
+							<div class="col-md-12 form-group">
+								<span class="col-md-6 ">Email</span>
+<!--								{{form.email}}-->
+								<input type="text" class="form-control col-md-12" id="email" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" value="{{customer.email}}" disabled>
+							</div>
+							<div class="col-md-12 form-group">
+								<span class="col-md-6 ">Name</span>
+								<input type="text" class="form-control" id="name" name="name" placeholder="Enter your Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Name'" value="{{customer.name}}">
+							</div>
+							<div class="col-md-12 form-group">
+								<span class="col-md-6 ">Mobile No</span>
+								<input type="text" class="form-control" id="mobile" name="mobile_no" placeholder="Mobile Number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mobile Number'" value="{{customer.mobile_no}}">
+							</div>
+							<div class="col-md-12 form-group">
+								<span class="col-md-6 ">Alternate Mobile No</span>
+								<input type="text" class="form-control" id="alternatemobile" name="alternate_mobile_no" placeholder="Alternate Mobile Number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Alternate Mobile Number'" value="{{customer.alternate_mobile_no}}">
+							</div>
+							<br/><br/>
+							<center>{{form.errors}}</center>
+							<br/><br/>
+							<div class="col-md-12 form-group">
+								<button type="submit" value="submit" class="primary-btn">Update Profile</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Login Box Area =================-->
+{% endblock %}
