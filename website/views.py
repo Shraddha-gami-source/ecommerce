@@ -8,7 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.decorators import login_required
 
-from ecommerce.tasks import post_signup_welcome_mail, order_mail
+from ecommerce.tasks import post_signup_welcome_mail, post_order_mail
 from .forms import CreateUserForm, EditProfileForm
 from .models import *
 from .utils import cookieCart, cartData, guestOrder
@@ -53,7 +53,7 @@ def singleProduct(request):
 
 # @login_required(login_url='login')
 def checkout(request):
-    data = cookieCart(request)
+    data = cartData(request)
     cartItems = data['cartItems']
     order = data['order']
     items = data['items']
@@ -220,7 +220,7 @@ def updateItem(request):
 
     return JsonResponse('Item was added', safe=False)
 
-@csrf_exempt
+
 def processOrder(request):
     transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body)
@@ -235,9 +235,9 @@ def processOrder(request):
     order.transaction_id = transaction_id
 
     if total == order.get_cart_total:
-        order_mail(username=request.user.username, order=order)
+        post_order_mail.delay(username=request.user.username)
+        print('ordered')
         order.complete = True
-        # order_mail(customer, order)
     order.save()
 
     ShippingAddress.objects.create(
@@ -248,6 +248,5 @@ def processOrder(request):
         state=data['shipping']['state'],
         zipcode=data['shipping']['zipcode'],
     )
-
-    return JsonResponse('Payment Complete!', safe=False)
+    return redirect('index')
 

@@ -51,10 +51,6 @@ class Order(models.Model):
         total = sum([item.quantity for item in order_items])
         return total
 
-    @property
-    def gst_total(self):
-        last_price = self.get_cart_total * (118/100)
-        return last_price
 
 class OrderItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)

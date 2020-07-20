@@ -140,7 +140,6 @@
                             <ul class="list list_2">
                                 <li><a href="#">Subtotal <span>{{ order.get_cart_total|floatformat:2 }}</span></a></li>
 <!--                                <li><a href="#">Shipping <span>$50</span></a></li>-->
-                                <li><a href="#">Total <span>{{ order.gst_total }}</span></a></li>
                             </ul>
 
 <!--                            <div class="payment_item">-->
@@ -222,6 +221,7 @@
                 shippingInfo.city = form.city.value
                 shippingInfo.state = form.state.value
                 shippingInfo.zipcode = form.zipcode.value
+
             }
 
             if (user == 'AnonymousUser'){
